@@ -6,7 +6,7 @@ pipeline {
   stages {
     stage('example') {
       steps {
-        echo "${params.greeting}Welcome to jenkins wrold!"
+        echo "${params.greeting} Welcome to jenkins wrold!"
       }
     }
   }
