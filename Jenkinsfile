@@ -1,7 +1,3 @@
-
-
-
-
 pipeline {
     agent any
     stages {
@@ -10,29 +6,35 @@ pipeline {
                 echo 'Building ..'
             }
         }
-        stage ('Test') {
+        stage ('test'){
             steps {
-                echo 'Testing..'
+                echo 'Testing ..'
             }
         }
-        stage ('deploy') {
+        stage ('deploy'){
             steps {
-                echo 'Deploying..'
+                echo 'Deploying ..'
             }
         }
-            }
-        }
+    }
+}
 
+parameters
 pipeline {
-    agent any
+    agent any 
     parameters {
-        string (name: 'Greeting', defaultValue: 'Hello', description: 'How should i greet the world?')
+       string (name: 'Greeting', defaultValue: 'Hello', description: 'How should i greet the world?')
     }
-        stages {
-            stage ('Example') {
-                steps {
-                    echo "${params.Greeting} welcome to jenkins world !"
-                }
+    stages {
+        stage ('Example') {
+            steps {
+                echo "${params.Greeting} welcome to jenkins world !"
             }
         }
     }
+}
+
+
+          
+  
+  
