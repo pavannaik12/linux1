@@ -1,4 +1,21 @@
-gsgudg
-jhfhjgf
-jkfhkhf
-bhfgf
+pipeline{
+    agent any
+    tools{
+        maven "maven"
+    }
+    stages{
+        stage("Build maven"){
+            steps{
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/pavannaik12/pom.yml.git']]])
+                sh "mvn clean package"
+            }
+        }
+        stage("Build docker image"){
+            steps{
+                script{
+                    sh "docker build -t java/dev-automation ."
+                }
+            }
+        }
+    }
+}
